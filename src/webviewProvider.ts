@@ -5,6 +5,14 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
   constructor(private extensionUri: vscode.Uri) {}
 
   public resolveWebviewView(webviewView: vscode.WebviewView) {
+    webviewView.webview.options = {
+      enableScripts: true,
+    };
+
+    const scriptUri = webviewView.webview.asWebviewUri(
+      vscode.Uri.joinPath(this.extensionUri, "public", "index.js")
+    );
+
     webviewView.webview.html = `
     <!DOCTYPE html>
     <html lang="ja">
@@ -15,6 +23,7 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
       </head>
       <body>
         <h1>Hello World!</h1>
+        <script src="${scriptUri}" />
       </body>
     </html>
     `;
