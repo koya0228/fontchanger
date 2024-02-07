@@ -12,12 +12,24 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "fontchanger.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "views": {
+      "fontChanger": [
+        {
+          "id": "fontChanger.webview",
+          "name": "font changer",
+          "type": "webview"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "fontChanger",
+          "title": "font changer",
+          "icon": "./logo.svg"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
