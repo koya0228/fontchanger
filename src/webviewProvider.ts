@@ -22,7 +22,7 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
         <title>WebView Example</title>
       </head>
       <body>
-        <h1>Hello World!</h1>
+        <div id="root"></div>
         <script src="${scriptUri}" />
       </body>
     </html>

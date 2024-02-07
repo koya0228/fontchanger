@@ -1,3 +1,6 @@
 "use script";
 
-console.log("webview");
+const $ = (selector) => document.querySelector(selector);
+
+const rootEl = $("#root");
+rootEl.innerText = "test";
