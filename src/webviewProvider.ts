@@ -13,19 +13,23 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
       vscode.Uri.joinPath(this.extensionUri, "public", "index.js")
     );
 
+
+    
+
+
     webviewView.webview.html = `
-    <!DOCTYPE html>
-    <html lang="ja">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>WebView Example</title>
-      </head>
-      <body>
-        <div id="root"></div>
-        <script src="${scriptUri}" />
-      </body>
-    </html>
+      <!DOCTYPE html>
+      <html lang="ja">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>WebView Example</title>
+        </head>
+        <body>
+          <div id="root"></div>
+          <script src="${scriptUri}" />
+        </body>
+      </html>
     `;
   }
 }
