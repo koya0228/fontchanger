@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { newFontset } from "./fontFunction";
+import { readJsonFile } from "./jsonFile";
 
 
 export class WebViewProvider implements vscode.WebviewViewProvider {
@@ -14,11 +15,19 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
       vscode.Uri.joinPath(this.extensionUri, "public", "index.js")
     );
 
+    const dataJsonUri = webviewView.webview.asWebviewUri(
+      vscode.Uri.joinPath(this.extensionUri, "data", "data.json")
+    );
 
-    webviewView.webview.onDidReceiveMessage((message) => {
+    webviewView.webview.onDidReceiveMessage(async (message) => {
       switch (message.type) {
         case "new-font":
           newFontset(message.target, message.fonts);
+          break;
+
+        case "read-json":
+          const jsonData = await readJsonFile(dataJsonUri.fsPath);
+          console.log(jsonData);
           break;
       }
     });

@@ -12,5 +12,7 @@ function getConfig(target: Target): WorkspaceConfiguration {
 
 
 export async function newFontset(target: Target, fonts: string[]): Promise<void> {
+  console.log("ewreef");
+  
   getConfig(target).update("fontFamily", fonts.join(", "), true);
 }

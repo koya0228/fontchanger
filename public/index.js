@@ -15,13 +15,22 @@ createBtn(rootEl, () => {
   const fontsText = fontsEl.value;
   console.log(fontsEl.value);
 
-  const fontsList = fontsText.split(",");
-  console.log(fontsList);
+  if (fontsText !== "") {
+    const fontsList = fontsText.split(",");
+    console.log(fontsList);
 
+    vscode.postMessage({
+      type: "new-font",
+      target: "Editor",
+      fonts: fontsList
+    });
+  }
+});
+
+
+createBtn(rootEl, () => {
   vscode.postMessage({
-    type: "new-font",
-    target: "Editor",
-    fonts: fontsList
+    type: "read-json"
   });
 });
 
