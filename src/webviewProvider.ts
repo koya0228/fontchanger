@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { newFontset } from "./fontFunction";
 
 
 export class WebViewProvider implements vscode.WebviewViewProvider {
@@ -14,7 +15,13 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
     );
 
 
-    
+    webviewView.webview.onDidReceiveMessage((message) => {
+      switch (message.type) {
+        case "new-font":
+          newFontset(message.target, message.fonts);
+          break;
+      }
+    });
 
 
     webviewView.webview.html = `

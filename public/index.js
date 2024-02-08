@@ -1,13 +1,19 @@
 "use script";
 
 
+const vscode = acquireVsCodeApi();
+
 const $ = (selector) => document.querySelector(selector);
 
 const rootEl = $("#root");
 
 
 createBtn(rootEl, () => {
-  console.log("test");
+  vscode.postMessage({
+    type: "new-font",
+    target: "Editor",
+    fonts: ["チョークS"]
+  });
 });
 
 
