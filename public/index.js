@@ -27,3 +27,9 @@ function createBtn(parentEl, func = null) {
   btnEl.innerText = "BTN";
   parentEl.appendChild(btnEl);
 }
+
+function createTextbox(parentEl) {
+  const textboxEl = document.createElement("input");
+  textboxEl.type = "text";
+  parentEl.appendChild(textboxEl);
+}
