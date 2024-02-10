@@ -1,5 +1,9 @@
 [
   {
-    "name": "test"
+    "name": "default",
+    "fonts": [
+      "HackGen", "Consolas", "Courier New", "monospace"
+    ],
+    "selected": true
   }
 ]

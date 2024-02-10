@@ -27,7 +27,10 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
 
         case "read-json":
           const jsonData = await readJsonFile(dataJsonUri.fsPath);
-          console.log(jsonData);
+          webviewView.webview.postMessage({
+            type: "fontsets-data",
+            data: jsonData
+          });
           break;
       }
     });
