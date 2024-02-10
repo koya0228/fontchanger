@@ -5,5 +5,12 @@
       "HackGen", "Consolas", "Courier New", "monospace"
     ],
     "selected": true
+  },
+  {
+    "name": "チョーク",
+    "fonts": [
+      "チョークS"
+    ],
+    "selected": false
   }
 ]

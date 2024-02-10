@@ -22,8 +22,34 @@ async function createFontsetListViewer(parentEl) {
 
   vscode.postMessage({ type: "read-json" });
 
-  const test = await receiveMessage();
-  console.log(test);
+  const fontsetsListStr = await receiveMessage();
+
+  const fontsetsListEl = $(".js_fontsetsList_list");
+  const fontsetsList = JSON.parse(fontsetsListStr);
+  
+  fontsetsList.forEach((thisFontset, i) => {
+    console.log(thisFontset);
+    fontsetsListEl.insertAdjacentHTML("beforeend", `
+      <div class="bl_fontsetsList_item js_fontsetsList_item">
+        <div class="bl_fontsetsList_name">
+          <p>${thisFontset.name}</p>
+        </div>
+        <div class="bl_fontsetsList_marker_outer">
+          <div class="el_selected_marker hp_selected_${thisFontset.selected}"></div>
+        </div>
+      </div>
+    `);
+
+    document.querySelectorAll(".js_fontsetsList_item")[i].addEventListener("click", () => {
+      thisFontset.selected = true;
+      fontsetsList.forEach((otherFontsets, j) => {
+        if (i !== j && otherFontsets.selected) {
+          otherFontsets.selected = false;
+        }
+      });
+      console.log(fontsetsList);
+    });
+  });
 }
 
 
