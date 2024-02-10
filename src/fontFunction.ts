@@ -11,8 +11,6 @@ function getConfig(target: Target): WorkspaceConfiguration {
 }
 
 
-export async function newFontset(target: Target, fonts: string[]): Promise<void> {
-  console.log("ewreef");
-  
+export async function changeFontset(target: Target, fonts: string[]): Promise<void> {
   getConfig(target).update("fontFamily", fonts.join(", "), true);
 }

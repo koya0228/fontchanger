@@ -1,16 +1,26 @@
 [
   {
     "name": "default",
-    "fonts": [
-      "HackGen", "Consolas", "Courier New", "monospace"
-    ],
+    "fonts": {
+      "editor": [
+        "HackGen", "Consolas", "Courier New", "monospace"
+      ], 
+      "terminal": [
+        "HackGen", "Consolas", "Courier New", "monospace"
+      ]
+    },
     "selected": true
   },
   {
     "name": "チョーク",
-    "fonts": [
-      "チョークS"
-    ],
+    "fonts": {
+      "editor": [
+        "チョークS"
+      ],
+      "terminal": [
+        "チョークS"
+      ]
+    },
     "selected": false
   }
 ]
