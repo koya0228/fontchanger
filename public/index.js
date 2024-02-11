@@ -16,16 +16,26 @@ async function createFontsetListViewer(parentEl) {
       <div class="bl_fontsetsList_search">
         <input type="text" class="bl_fontsetsList_search_input js_fontsetsList_search_input">
       </div>
-      <div class="bl_fontsetsList_list js_fontsetsList_list"></div>
+      <div class="bl_fontsetsList_list js_fontsetsList_list">
+        <div class="bl_fontsetsList_add js_fontsetsList_add">
+          <p>+ add fontset</p>
+        </div>
+      </div>
     </div>
   `);
+
+  $(".js_fontsetsList_add").addEventListener("click", () => {
+    vscode.postMessage({
+      type: "add-font"
+    });
+  });
 
   vscode.postMessage({ type: "read-json" });
 
   const fontsetsListStr = await receiveMessage();
+  const fontsetsList = JSON.parse(fontsetsListStr);
 
   const fontsetsListEl = $(".js_fontsetsList_list");
-  const fontsetsList = JSON.parse(fontsetsListStr);
   
   fontsetsList.forEach((thisFontset, i) => {
     fontsetsListEl.insertAdjacentHTML("beforeend", `

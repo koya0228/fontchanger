@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { changeFontset } from "./fontFunction";
+import { addNewFontset, changeFontset } from "./fontFunction";
 import { readJsonFile, writeJsonFile } from "./jsonFile";
 
 
@@ -23,6 +23,10 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
       switch (message.type) {
         case "change-font":
           changeFontset(message.target, message.fonts);
+          break;
+
+        case "add-font":
+          addNewFontset();
           break;
 
         case "read-json":
