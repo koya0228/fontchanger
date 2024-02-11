@@ -24,10 +24,14 @@ async function createFontsetListViewer(parentEl) {
     </div>
   `);
 
-  $(".js_fontsetsList_add").addEventListener("click", () => {
+  $(".js_fontsetsList_add").addEventListener("click", async () => {
     vscode.postMessage({
       type: "add-font"
     });
+    const fontsetsListStr = await receiveMessage();
+    const rootEl = $("#root");
+    rootEl.innerHTML = "";
+    createFontsetListViewer(rootEl);
   });
 
   vscode.postMessage({ type: "read-json" });

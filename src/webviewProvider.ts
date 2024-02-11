@@ -26,7 +26,10 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
           break;
 
         case "add-font":
-          addNewFontset();
+          await addNewFontset(dataJsonUri.fsPath);
+          webviewView.webview.postMessage({
+            type: "fontsets-data",
+          });
           break;
 
         case "read-json":
