@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import { changeFontset } from "./fontFunction";
-import { readJsonFile } from "./jsonFile";
+import { readJsonFile, writeJsonFile } from "./jsonFile";
 
 
 export class WebViewProvider implements vscode.WebviewViewProvider {
@@ -31,6 +31,11 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
             type: "fontsets-data",
             data: jsonData
           });
+          break;
+
+        case "write-json":
+          const jsonDataStr = JSON.stringify(message.data);
+          await writeJsonFile(dataJsonUri.fsPath, jsonDataStr);
           break;
       }
     });

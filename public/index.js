@@ -58,6 +58,11 @@ async function createFontsetListViewer(parentEl) {
           otherFontsets.selected = false;
         }
       });
+
+      vscode.postMessage({
+        type: "write-json",
+        data: fontsetsList
+      });
     });
   });
 }

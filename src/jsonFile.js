@@ -2,8 +2,8 @@
 
 const fs = require("fs");
 
-export async function writeJsonFile(filepath) {
-  fs.writeFile(filepath, "io", (err) => {
+export async function writeJsonFile(filepath, data) {
+  fs.writeFile(filepath, data, (err) => {
     if (err) {
       throw err;
     }
