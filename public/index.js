@@ -28,7 +28,6 @@ async function createFontsetListViewer(parentEl) {
   const fontsetsList = JSON.parse(fontsetsListStr);
   
   fontsetsList.forEach((thisFontset, i) => {
-    console.log(thisFontset);
     fontsetsListEl.insertAdjacentHTML("beforeend", `
       <div class="bl_fontsetsList_item js_fontsetsList_item">
         <div class="bl_fontsetsList_name">
@@ -42,12 +41,23 @@ async function createFontsetListViewer(parentEl) {
 
     document.querySelectorAll(".js_fontsetsList_item")[i].addEventListener("click", () => {
       thisFontset.selected = true;
+
+      vscode.postMessage({
+        type: "change-font",
+        target: "Editor",
+        fonts: thisFontset.fonts.editor
+      });
+      vscode.postMessage({
+        type: "change-font",
+        target: "Terminal",
+        fonts: thisFontset.fonts.terminal
+      });
+
       fontsetsList.forEach((otherFontsets, j) => {
         if (i !== j && otherFontsets.selected) {
           otherFontsets.selected = false;
         }
       });
-      console.log(fontsetsList);
     });
   });
 }

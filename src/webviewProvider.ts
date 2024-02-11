@@ -21,7 +21,7 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
 
     webviewView.webview.onDidReceiveMessage(async (message) => {
       switch (message.type) {
-        case "new-font":
+        case "change-font":
           changeFontset(message.target, message.fonts);
           break;
 
