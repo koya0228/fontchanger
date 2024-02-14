@@ -13,9 +13,6 @@ createFontsetListViewer(rootEl);
 async function createFontsetListViewer(parentEl) {
   parentEl.insertAdjacentHTML("beforeend", `
     <div class="bl_fontsetsList">
-      <div class="bl_fontsetsList_search">
-        <input type="text" class="bl_fontsetsList_search_input js_fontsetsList_search_input">
-      </div>
       <div class="bl_fontsetsList_list js_fontsetsList_list">
         <div class="bl_fontsetsList_add js_fontsetsList_add">
           <p>+ add fontset</p>
