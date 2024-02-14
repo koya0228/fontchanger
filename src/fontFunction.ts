@@ -15,8 +15,20 @@ function getConfig(target: Target): WorkspaceConfiguration {
 export async function addNewFontset(filepath): Promise<void> {
   return new Promise<void>(async (resolve, reject) => {
     const fontsetName = await window.showInputBox({ placeHolder: "Fontset Name" });
+    console.log(fontsetName);
+    if (fontsetName === undefined) {
+      return resolve();
+    }
+
     const editorFonts = await window.showInputBox({ placeHolder: "Editor Fonts" });
+    if (editorFonts === undefined) {
+      return resolve();
+    }
+    
     const terminalFonts = await window.showInputBox({ placeHolder: "Terminal Fonts" });
+    if (terminalFonts === undefined) {
+      return resolve();
+    }
 
     console.log(fontsetName, editorFonts, terminalFonts);
     
