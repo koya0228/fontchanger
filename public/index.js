@@ -15,7 +15,7 @@ async function createFontsetListViewer(parentEl) {
     <div class="bl_fontsetsList">
       <div class="bl_fontsetsList_list js_fontsetsList_list">
         <div class="bl_fontsetsList_add js_fontsetsList_add">
-          <p>+ add fontset</p>
+          <p>Add Fontset</p>
         </div>
       </div>
     </div>
@@ -50,30 +50,39 @@ async function createFontsetListViewer(parentEl) {
       </div>
     `);
 
-    document.querySelectorAll(".js_fontsetsList_item")[i].addEventListener("click", () => {
-      thisFontset.selected = true;
+    document.querySelectorAll(".js_fontsetsList_item")[i].addEventListener("click", async() => {
+      await (function() {
+        return new Promise((resolve, reject) => {
+          thisFontset.selected = true;
 
-      vscode.postMessage({
-        type: "change-font",
-        target: "Editor",
-        fonts: thisFontset.fonts.editor
-      });
-      vscode.postMessage({
-        type: "change-font",
-        target: "Terminal",
-        fonts: thisFontset.fonts.terminal
-      });
+          vscode.postMessage({
+            type: "change-font",
+            target: "Editor",
+            fonts: thisFontset.fonts.editor
+          });
+          vscode.postMessage({
+            type: "change-font",
+            target: "Terminal",
+            fonts: thisFontset.fonts.terminal
+          });
 
-      fontsetsList.forEach((otherFontsets, j) => {
-        if (i !== j && otherFontsets.selected) {
-          otherFontsets.selected = false;
-        }
-      });
+          fontsetsList.forEach((otherFontsets, j) => {
+            if (i !== j && otherFontsets.selected) {
+              otherFontsets.selected = false;
+            }
+          });
 
-      vscode.postMessage({
-        type: "write-json",
-        data: fontsetsList
-      });
+          vscode.postMessage({
+            type: "write-json",
+            data: fontsetsList
+          });
+          
+          parentEl.innerHTML = "";
+          createFontsetListViewer(parentEl);
+
+          resolve();
+        });
+      })();
     });
   });
 }
