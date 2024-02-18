@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  user-select: none;
+}
+
+#root {
+  width: 100%;
+}
+
+.bl_fontsetsList_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bl_fontsetsList_add {
+  width: 100%;
+  max-width: 300px;
+  padding: 4px;
+  border: 1px solid var(--vscode-button-border, transparent);
+  border-radius: 2px;
+  color: var(--vscode-button-foreground);
+  background-color: var(--vscode-button-background);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  line-height: 18px;
+  box-sizing: border-box;
+}
+
+.bl_fontsetsList_item_outer {
+  width: 100%;
+  height: 48px;
+  margin: 12px 0 0 0;
+  padding: 2px 40px 2px 12px;
+  position: relative;
+  background: var(--vscode-input-background);
+  box-sizing: border-box;
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 2px;
+
+  &:hover {
+    background: var(--vscode-textSeparator-foreground);
+  }
+}
+
+.bl_fontsetsList_item {
+  height: 100%;
+}
+
+.bl_fontsetsList_name {
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.bl_fontsetsList_marker_outer {
+  height: 50%;
+}
+
+.bl_fontsetsList_item_delete {
+  width: 20px;
+  height: 20px;
+  background: var(--vscode-badge-background);
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.el_selected_marker {
+  height: 100%;
+  position: relative;
+
+  &::before {
+    content: "selected";
+    display: block;
+    padding: 0 8px;
+    background: var(--vscode-activityBarBadge-background);
+    border-radius: 9999px;
+    font-size: .8em;
+    color: var(--vscode-activityBarBadge-foreground);
+    position: absolute;
+    bottom: 1px;
+  }
+
+  &.hp_selected_false {
+    display: none;
+  }
+}
+
+svg#_x32_ {
+  width: 12px;
+  height: 12px;
+  & .st0 {
+    fill: var(--vscode-input-background);
+  }
+}
