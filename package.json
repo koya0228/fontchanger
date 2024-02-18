@@ -26,7 +26,7 @@
         {
           "id": "fontChanger",
           "title": "font changer",
-          "icon": "./logo.svg"
+          "icon": "media/icon.svg"
         }
       ]
     }
